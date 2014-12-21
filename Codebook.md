@@ -121,6 +121,7 @@ Additional vectors obtained by averaging the signals in a signal window sample. 
 
 
 ## Data processing
+
 1. Merge the subjects, features and labels for both the training and test sets.
 2. Filter out features to have only the measurements on the mean and standard deviation for each measurement.
 3. Replace activity identifiers with descriptive activity names.

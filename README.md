@@ -3,6 +3,15 @@
 ## Details
 As part of the [Coursera and Johns Hopkins University Data Science specialization](https://www.coursera.org/specialization/jhudatascience/1/overview) - Getting and Cleaning Data course this addresses the requirement to deliver the suggested course project. This repository uses the [UCI Human Activity Recognition Using Smartphones data set](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) to retrieve, clean and create a tidy data set which has the characteristics defined in its correpsonding [Codebook](./Codebook.md).
 
+The script does the following:
+
+1. Merges the subjects, features and labels for both the training and test sets.
+2. Filters out features to have only the measurements on the mean and standard deviation for each measurement.
+3. Replaces activity identifiers with descriptive activity names.
+4. Updates column names to provide representative names.
+5. Computes the average of each variable for each activity and each subject.
+6. Writes the tidy data set without row names (to read make sure you do `d <- read.table("data/tidy.txt", stringsAsFactors = F, header = T)`)
+
 ## Usage
 By default, the [script](./run_analysis.R) reads the extracted data set located within the [data/UCI HAR Dataset](./data/UCI HAR Dataset) directory and performs the corresponding cleaning and creation of the [tidy data set](./data/tidy.txt).
 The script automatcially installs any package dependencies and loads them whenever needed.

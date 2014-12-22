@@ -181,11 +181,12 @@ createTidyDataSet <- function (dataSet) {
     tidyDataSet <- ddply(dataSet, .(activityName, subjectIdentifier), numcolwise(mean))
     
     ## Rename the column feature names to make them readable and reflect the current value
-    columnNames <- colnames(tidyDataSet)
-    normalizedFeatureNames <- gsub("(mean\\(\\))", "Mean", columnNames[3:length(columnNames)])
-    normalizedFeatureNames <- gsub("(std\\(\\))", "Std", normalizedFeatureNames)
+    columnNames <- tolower(colnames(tidyDataSet))
+    normalizedFeatureNames <- gsub("(mean\\(\\))", "mean", columnNames[3:length(columnNames)])
+    normalizedFeatureNames <- gsub("(std\\(\\))", "std", normalizedFeatureNames)
     normalizedFeatureNames <- gsub("(\\(|\\)|-|,|_)", "", normalizedFeatureNames)
-    normalizedFeatureNames <- vapply(normalizedFeatureNames, function (name) { paste0(name, "Average") }, FUN.VALUE = character(1))
+    
+    normalizedFeatureNames <- vapply(normalizedFeatureNames, function (name) { paste0(name, "average") }, FUN.VALUE = character(1))
     colnames(tidyDataSet) <- c(columnNames[1:2], normalizedFeatureNames)
     tidyDataSet
 }
